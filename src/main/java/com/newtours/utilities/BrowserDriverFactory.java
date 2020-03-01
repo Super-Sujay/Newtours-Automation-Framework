@@ -1,16 +1,22 @@
 package com.newtours.utilities;
 
+import org.openqa.selenium.UnexpectedAlertBehaviour;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.GeckoDriverService;
 import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.ie.InternetExplorerDriverService;
+import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.remote.BrowserType;
 
 /**
  * This Class is used to initialize the <b>Web Driver</b>.
  * 
  * @author Sujay Sawant
- * @version 1.0.3
- * @since 12/14/2019
+ * @version 1.0.4
+ * @since 03/01/2020
  */
 public class BrowserDriverFactory {
 
@@ -33,17 +39,23 @@ public class BrowserDriverFactory {
 	 */
 	public WebDriver createDriver() {
 		switch (browser) {
-		case "chrome":
-			System.setProperty(Constants.driver_chrome, Constants.driverPath_chrome);
+		case BrowserType.CHROME:
+			System.setProperty(ChromeDriverService.CHROME_DRIVER_EXE_PROPERTY, Constants.driverPath_chrome);
 			driver.set(new ChromeDriver());
 			break;
-		case "firefox":
-			System.setProperty(Constants.driver_firefox, Constants.driverPath_firefox);
+		case BrowserType.FIREFOX:
+			System.setProperty(GeckoDriverService.GECKO_DRIVER_EXE_PROPERTY, Constants.driverPath_firefox);
 			driver.set(new FirefoxDriver());
 			break;
-		case "ie":
-			System.setProperty(Constants.driver_ie, Constants.driverPath_ie);
-			driver.set(new InternetExplorerDriver());
+		case BrowserType.IE:
+			InternetExplorerOptions options = new InternetExplorerOptions();
+			options.setCapability(InternetExplorerDriver.NATIVE_EVENTS, false);
+			options.setCapability(InternetExplorerDriver.UNEXPECTED_ALERT_BEHAVIOR, UnexpectedAlertBehaviour.ACCEPT);
+			options.setCapability(InternetExplorerDriver.ENABLE_PERSISTENT_HOVERING, true);
+			options.setCapability(InternetExplorerDriver.IGNORE_ZOOM_SETTING, true);
+			options.setCapability(InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS, true);
+			System.setProperty(InternetExplorerDriverService.IE_DRIVER_EXE_PROPERTY, Constants.driverPath_ie);
+			driver.set(new InternetExplorerDriver(options));
 			break;
 		default:
 			System.out.println("Invalid browser name provided.");

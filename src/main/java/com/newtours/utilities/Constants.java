@@ -4,17 +4,13 @@ package com.newtours.utilities;
  * This Interface contains all the <b>Constants</b>.
  * 
  * @author Sujay Sawant
- * @version 1.0.3
- * @since 12/14/2019
+ * @version 1.0.4
+ * @since 03/01/2020
  */
 public interface Constants {
 	String browser_chrome = "Chrome";
 	String browser_ie = "Internet Explorer";
 	String browser_firefox = "Firefox";
-
-	String driver_chrome = "webdriver.chrome.driver";
-	String driver_ie = "webdriver.ie.driver";
-	String driver_firefox = "webdriver.gecko.driver";
 
 	String driverPath_chrome = "src/test/resources/chromedriver.exe";
 	String driverPath_ie = "src/test/resources/IEDriverServer.exe";
@@ -22,7 +18,7 @@ public interface Constants {
 
 	String screenShotDestination = "./target/screenshots/";
 	String reportsDestination = "./target/extent-reports/";
-	
+
 	String reportsFileName = "ExtentReport.html";
 
 	String mercuryToursWebsite = "http://newtours.demoaut.com";
