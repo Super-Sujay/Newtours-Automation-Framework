@@ -25,7 +25,7 @@ public class MercuryReservation2Page extends MainWebsitePage {
 	public static RadioButton blueSkiesAirlines630 = new RadioButton(BaseTest.getWebDriver(), "Blue Skies Airlines 630", By.cssSelector("input[value^='Blue Skies Airlines$630']"));
 	public static RadioButton blueSkiesAirlines631 = new RadioButton(BaseTest.getWebDriver(), "Blue Skies Airlines 360", By.cssSelector("input[value^='Blue Skies Airlines$631']"));
 	public static RadioButton pangeaAirlines632 = new RadioButton(BaseTest.getWebDriver(), "Pangea Airlines 632", By.cssSelector("input[value^='Pangea Airlines$632']"));
-	public static RadioButton unifiedAirlines633 = new RadioButton(BaseTest.getWebDriver(), "Unified Airlines 633", By.cssSelector("input[value=^'Unified Airlines$633']"));
+	public static RadioButton unifiedAirlines633 = new RadioButton(BaseTest.getWebDriver(), "Unified Airlines 633", By.cssSelector("input[value^='Unified Airlines$633']"));
 	public static Button continueNext = new Button(BaseTest.getWebDriver(), "Continue", By.name("reserveFlights"));
 
 	/**
